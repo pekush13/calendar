@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <style>
+      .examples h2 {
+        text-align: center;
+      }
+      .examples .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+    </style>
+    <link rel="stylesheet" href="../dist/src.ef9787cc.css" />
+  </head>
+  <body>
+    <div class="examples">
+      <h2>
+        Example 1
+        <div class="row">
+          <div class="coll">
+            <h3>Default</h3>
+            <div id="calendar1"></div>
+            <div><i id="calendar1_select"></i></div>
+          </div>
+          <div class="coll">
+            <h3>Range</h3>
+            <div id="calendar2"></div>
+            <div>
+              <i id="calendar2_start"></i> <span>/</span>
+              <i id="calendar2_end"></i>
+            </div>
+          </div>
+        </div>
+      </h2>
+    </div>
+    <script src="../dist/src.fd01a3af.js"></script>
+    <script>
+      var e = function (e) {
+          var n = new Date();
+          return n.setDate(n.getDate() + e), n;
+        },
+        n = function (e, n) {
+          return String(Math.pow(10, n) + e).slice(1);
+        },
+        t = function (e) {
+          return [e.getFullYear(), n(e.getMonth(), 2), n(e.getDate(), 2)].join(
+            "-"
+          );
+        };
+      !(function () {
+        var n = pekushCalendar.new(new Date(), {
+          select: new Date(),
+          onSelect: function (e) {
+            return (document.getElementById("calendar1_select").innerText = t(
+              e
+            ));
+          },
+        });
+        document.getElementById("calendar1").appendChild(n),
+          (document.getElementById("calendar1_select").innerText = t(
+            new Date()
+          ));
+        var a = e(-5),
+          r = e(5),
+          d = pekushCalendar.new(new Date(), {
+            range: !0,
+            start: a,
+            end: r,
+            onSelect: function (e, n) {
+              (document.getElementById("calendar2_start").innerText = t(e)),
+                (document.getElementById("calendar2_end").innerText = t(n));
+            },
+          });
+        document.getElementById("calendar2").appendChild(d),
+          (document.getElementById("calendar2_start").innerText = t(a)),
+          (document.getElementById("calendar2_end").innerText = t(r));
+      })();
+    </script>
+  </body>
+</html>
