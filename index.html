@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <style>
+			.examples h2 {
+				text-align: center;
+			}
+      .examples .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="examples">
+      <h2>Example 1</h3>
+      <div class="row">
+        <div class="coll">
+          <h3>Default</h3>
+          <div id="calendar1"></div>
+					<div>
+						<i id="calendar1_select"></i>
+					</div>
+        </div>
+        <div class="coll">
+          <h3>Range</h3>
+          <div id="calendar2"></div>
+					<div>
+						<i id="calendar2_start"></i>
+						<span>/</span>
+						<i id="calendar2_end"></i>
+					</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="src/index.js"></script>
+    <script>
+			const addDate = (nm) => {
+        const date = new Date();
+        date.setDate(date.getDate() + nm);
+        return date;
+      };
+			const zeroPad = (nNum, nPad) => String(Math.pow(10, nPad) + nNum).slice(1);
+			const formatDate = (date)  => [date.getFullYear(), zeroPad(date.getMonth(), 2), zeroPad(date.getDate(), 2)].join("-");
+		
+
+			// Example 1
+			(function() {
+				// Default
+				const calendar1 = pekushCalendar.new(new Date(), {
+					select: new Date(),
+					onSelect: (select) => document.getElementById("calendar1_select").innerText = formatDate(select),
+				});
+				document.getElementById("calendar1").appendChild(calendar1);
+				document.getElementById("calendar1_select").innerText = formatDate(new Date())
+				
+
+				// Range
+				const dateStart = addDate(-5);
+				const dateEnd = addDate(5);
+				const calendar2 = pekushCalendar.new(new Date(), {
+					range: true,
+					start: dateStart,
+					end: dateEnd,
+					onSelect: (start, end) => {
+						document.getElementById('calendar2_start').innerText = formatDate(start)
+						document.getElementById('calendar2_end').innerText = formatDate(end)
+					},
+				});
+				document.getElementById("calendar2").appendChild(calendar2);
+				document.getElementById('calendar2_start').innerText = formatDate(dateStart)
+				document.getElementById('calendar2_end').innerText = formatDate(dateEnd)
+			})();
+      
+    </script>
+  </body>
+</html>

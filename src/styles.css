@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
+
+.pekush-calendar {
+  font-family: "Inter", sans-serif;
+}
+
+.pekush-calendar .wrap {
+  width: fit-content;
+  background: #ffffff;
+  box-shadow: 0px 3.735px 19.92px rgba(0, 0, 0, 0.2);
+  border-radius: 12.45px;
+  padding: 15px;
+}
+
+.pekush-calendar .header {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .pekush-calendar .header .caption {
+  display: flex;
+  justify-content: space-between;
+} */
+
+.pekush-calendar .header .caption {
+  position: relative;
+}
+
+.pekush-calendar .header h3 {
+  font-weight: 700;
+  font-size: 15px;
+  margin: 0px 10px 0px 0px;
+  display: inline-flex;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.pekush-calendar .header ul {
+  /* display: inline-block; */
+  position: absolute;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 3.735px 19.92px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  list-style: none;
+  padding: 0;
+  left: -15px;
+  top: 15px;
+  display: none;
+}
+
+.pekush-calendar .header h3.focus ~ ul {
+  display: inline-block;
+}
+
+.pekush-calendar .header ul a {
+  padding: 5px 10px;
+  display: block;
+  text-decoration: none;
+  color: #000;
+  text-transform: capitalize;
+  font-size: 15px;
+  text-align: left;
+}
+
+.pekush-calendar .header ul a:hover {
+  background: #77ba22;
+  color: #fff;
+}
+
+.pekush-calendar .header p {
+  display: inline-flex;
+  margin: 0px;
+  font-size: 15px;
+  font-weight: 100;
+  padding: 5px;
+}
+
+.pekush-calendar .arrow {
+  border: none;
+  background: none;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+.pekush-calendar .arrow.right {
+  transform: rotate(180deg);
+}
+
+.pekush-calendar .content {
+  margin-top: 30px;
+}
+
+.pekush-calendar .content .weeks {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  text-transform: capitalize;
+  font-size: 10px;
+  color: #aaaaaa;
+}
+
+.pekush-calendar .content .weeks .item {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
+.pekush-calendar .content .weeks .item:nth-child(6n),
+.pekush-calendar .content .weeks .item:nth-child(7n) {
+  color: #e03e0a;
+}
+
+.pekush-calendar .content .dates .row {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-between; */
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.pekush-calendar .content .weeks,
+.pekush-calendar .content .dates .row {
+  margin: -10px;
+}
+
+.pekush-calendar .content .weeks .item,
+.pekush-calendar .content .dates .row .date {
+  padding: 0px 10px;
+  line-height: 20px;
+  text-align: center;
+  margin: 10px 0px;
+}
+
+.pekush-calendar .content .dates .row .date b {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+}
+
+.pekush-calendar .content .dates .row .date:nth-child(6n),
+.pekush-calendar .content .dates .row .date:nth-child(7n) {
+  color: #e03e0a;
+}
+
+.pekush-calendar .content .dates .row .date.disable {
+  color: #aaaaaa;
+  cursor: auto;
+}
+
+.pekush-calendar .content .dates .row .date {
+  position: relative;
+}
+
+.pekush-calendar .content .dates .row .date b {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.pekush-calendar .content .dates .row .path:after {
+  background: #abd773;
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  top: 0px;
+  position: absolute;
+  z-index: -0;
+  left: 0;
+}
+
+.pekush-calendar .content .dates .row .select-start.path::after,
+.pekush-calendar .content .dates .row .select-end .path::after {
+  width: 50%;
+}
+
+.pekush-calendar .content .dates .row .select-start.path::after {
+  left: 50%;
+}
+
+.pekush-calendar .content .dates .row .select-end.path::after {
+  left: -50%;
+}
+
+.pekush-calendar .content .dates .row .select-start b,
+.pekush-calendar .content .dates .row .select-end b,
+.pekush-calendar .content .dates .row .select b {
+  background: #77ba22;
+  color: #fff !important;
+  border-radius: 100px;
+}
+
+.pekush-calendar .content .dates .row .select-end.path:first-child::after {
+  left: 0%;
+  width: 50%;
+}
