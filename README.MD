@@ -1,6 +1,6 @@
 # pekush calendar
 
-example there: https://pekush13.github.io/pekush13/dist/index.html
+example there: https://pekush13.github.io/calendar/examples/
 
 ## Include
 
